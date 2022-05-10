@@ -9,9 +9,20 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
+void SetupMesh(GLuint& vao);
+void SetupShader(GLuint& shaderObject );
+
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+
+float vertexData[] = 
+{
+    0.5f , 0.5f , 0.0f,
+    0.0f , -0.5f , 0.0f,
+    -0.5f , 0.5f , 0.0f,
+};
+
 
 
 int main()
@@ -48,7 +59,8 @@ int main()
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
-
+    GLuint vao;
+    SetupMesh(vao);
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -89,6 +101,31 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
+}
+
+void SetupMesh(GLuint &vao)
+{
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    GLuint vbo;
+    glGenBuffers(GL_ARRAY_BUFFER , &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER,vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glBindVertexArray(0);
+}
+void SetupShader(GLuint& shaderObject)
+{
+    const char* vertexShaderSource = "#version 330 core\n"
+        "layout (location = 0) in vec3 aPos;\n"
+        "void main()\n"
+        "{\n"
+        "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+        "}\0";
+
+
+  
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
