@@ -11,7 +11,7 @@ void processInput(GLFWwindow* window);
 
 void SetupMesh(GLuint& vao);
 void SetupShader(GLuint& shaderObject );
-
+void LinkShader(GLuint& shaderObject);
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -60,7 +60,11 @@ int main()
         return -1;
     }
     GLuint vao;
+    GLuint shaderObject;
+
     SetupMesh(vao);
+    SetupShader(shaderObject);
+
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -73,6 +77,12 @@ int main()
         // ------
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glEnableVertexAttribArray(0);
+        // 2. use our shader program when we want to render an object
+        glUseProgram(shaderObject);
+        glBindVertexArray(vao);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -108,7 +118,7 @@ void SetupMesh(GLuint &vao)
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     GLuint vbo;
-    glGenBuffers(GL_ARRAY_BUFFER , &vbo);
+    glGenBuffers(1 , &vbo);
     glBindBuffer(GL_ARRAY_BUFFER,vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -159,8 +169,19 @@ void SetupShader(GLuint& shaderObject)
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::FRAG::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
-  
+    
+    shaderObject = glCreateProgram();
+    glAttachShader(shaderObject, vertexShader);
+    glAttachShader(shaderObject, fragmentShader);
 
+    LinkShader(shaderObject);
+
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
+}
+void LinkShader(GLuint& shaderObject)
+{
+    glLinkProgram(shaderObject);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
