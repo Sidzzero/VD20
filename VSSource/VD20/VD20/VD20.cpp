@@ -5,6 +5,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "shader.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -18,11 +19,11 @@ const unsigned int SCR_HEIGHT = 600;
 
 float vertexData[] = 
 {
-    0.5f , 0.5f , 0.0f,
-    0.0f , -0.5f , 0.0f,
-    -0.5f , 0.5f , 0.0f,
+    0.5f , 0.5f , 0.0f,   
+    0.0f , -0.5f , 0.0f,  
+    -0.5f , 0.5f , 0.0f, 
 };
-
+ 
 
 
 int main()
@@ -65,6 +66,8 @@ int main()
     SetupMesh(vao);
     SetupShader(shaderObject);
 
+    Shader simpleShader("shaders/simple.vert","shaders/simple.frag");
+    
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -80,7 +83,8 @@ int main()
 
         glEnableVertexAttribArray(0);
         // 2. use our shader program when we want to render an object
-        glUseProgram(shaderObject);
+      //  glUseProgram(shaderObject);
+        simpleShader.use();
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
