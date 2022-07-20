@@ -5,12 +5,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "Core/stb_image.h"
+
 #include "shader.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 void SetupMesh(GLuint& vao);
+GLuint SetupTexture(const char* a_fileName);
 void SetupShader(GLuint& shaderObject );
 void LinkShader(GLuint& shaderObject);
 // settings
@@ -23,7 +27,14 @@ float vertexData[] =
     0.0f , -0.5f , 0.0f,  
     -0.5f , 0.5f , 0.0f, 
 };
- 
+float verticesWithTexture[] = 
+{
+    // positions          // colors           // texture coords
+     0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+     0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+    -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+    -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+};
 
 
 int main()
@@ -60,13 +71,19 @@ int main()
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
+
+
     GLuint vao;
+    GLuint texture;
     GLuint shaderObject;
 
+    
     SetupMesh(vao);
+    texture = SetupTexture("container.jpg");
     SetupShader(shaderObject);
 
-    Shader simpleShader("shaders/simple.vert","shaders/simple.frag");
+    Shader simpleShader("shaders/simple.vert", "shaders/simple.frag");
+    Shader simpleTexShader("shaders/simple_tex.vert","shaders/simple_tex.frag");
     
     // render loop
     // -----------
@@ -84,8 +101,10 @@ int main()
         glEnableVertexAttribArray(0);
         // 2. use our shader program when we want to render an object
       //  glUseProgram(shaderObject);
-        simpleShader.use();
+        simpleTexShader.use();
+        glBindTexture(GL_TEXTURE_2D, texture);
         glBindVertexArray(vao);
+
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -124,9 +143,26 @@ void SetupMesh(GLuint &vao)
     GLuint vbo;
     glGenBuffers(1 , &vbo);
     glBindBuffer(GL_ARRAY_BUFFER,vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glBindVertexArray(0);
+
+   //without texture
+   // glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+  //  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+    //with texture and color
+   
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesWithTexture), verticesWithTexture, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(0));//Position
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));//Color
+    glEnableVertexAttribArray(1);
+
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));//Texture
+    glEnableVertexAttribArray(2);
+    
+  //  glBindVertexArray(0);
+   
 }
 void SetupShader(GLuint& shaderObject)
 {
@@ -186,6 +222,31 @@ void SetupShader(GLuint& shaderObject)
 void LinkShader(GLuint& shaderObject)
 {
     glLinkProgram(shaderObject);
+}
+
+GLuint SetupTexture(const char *a_fileName)
+{
+    GLuint texture = -1;
+    int width, height, nrChannels;
+
+    unsigned char* data = stbi_load(a_fileName, &width, &height, &nrChannels, 0);
+    if(data == nullptr)
+    { 
+        std::cout << "Error in loading Texture" << std::endl;
+        return texture;
+    }
+    else
+    {
+        std::cout << "Sucess in loading Texture:"<< a_fileName<<std::endl;
+    }
+
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    stbi_image_free(data);
+
+    return texture;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
