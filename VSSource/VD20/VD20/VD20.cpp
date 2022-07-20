@@ -4,14 +4,15 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Core/common.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "Core/stb_image.h"
+#include "Core/External/stb_image.h"
 
 
-#include "Core/glm/glm/glm.hpp"
-#include "Core/glm/glm/gtc/matrix_transform.hpp"
-#include "Core/glm/glm/gtc/type_ptr.hpp"
+#include "Core/External/glm/glm/glm.hpp"
+#include "Core/External/glm/glm/gtc/matrix_transform.hpp"
+#include "Core/External/glm/glm/gtc/type_ptr.hpp"
 
 #include "shader.h"
 
@@ -44,6 +45,7 @@ float verticesWithTexture[] =
 
 int main()
 {
+    
     std::cout << "Welcome VD_20\n";
 
     // glfw: initialize and configure
