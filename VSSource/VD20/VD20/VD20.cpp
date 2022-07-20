@@ -8,6 +8,11 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "Core/stb_image.h"
 
+
+#include "Core/glm/glm/glm.hpp"
+#include "Core/glm/glm/gtc/matrix_transform.hpp"
+#include "Core/glm/glm/gtc/type_ptr.hpp"
+
 #include "shader.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -72,6 +77,14 @@ int main()
         return -1;
     }
 
+    //Testing GLm imports
+    /*
+    glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+    vec = trans * vec;
+    std::cout << vec.x << vec.y << vec.z << std::endl;
+    */
 
     GLuint vao;
     GLuint texture;
