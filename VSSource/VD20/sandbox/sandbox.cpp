@@ -1,12 +1,17 @@
 // sandbox.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// NEED TO LINK TO Actual head file also
 
 #include <iostream>
-
+#include "app_tictactoe.h"
 int main()
 {
-    std::cout << "Hello World!\n";
- 
+    std::cout << "Welocme to Sandbox!\n";
+
+    app_tictactoe t(1,1);
+    t.Init();
+    std::cout << "Press something to continue...";
+    getchar();
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
