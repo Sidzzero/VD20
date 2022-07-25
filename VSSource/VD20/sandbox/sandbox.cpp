@@ -11,14 +11,19 @@ int main()
 {
     std::cout << "Welocme to Sandbox!\n";
     WindowApp* winApp = nullptr;
+    WindowApp* winEditorApp = nullptr;
     winApp = new WindowApp();
+    winEditorApp = new WindowApp();
     Game* game = new app_tictactoe(800, 600);
     game->Init();
 
     winApp->Init("VD Engine", 800, 700,game);
+    winEditorApp->Init("VD_Engine_Editor",800,700,game);
     winApp->Loop();
-  
     winApp->Cleanup();
+    std::cout << "Starting window 2..";
+    winEditorApp->Loop();
+    winEditorApp->Cleanup();
     std::cout << "Press something to continue...";
     getchar();
     return 0;

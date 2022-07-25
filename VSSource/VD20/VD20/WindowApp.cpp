@@ -64,7 +64,8 @@ void WindowApp::Loop()
 		glfwSwapBuffers(window);
 		
 	}
-	glfwTerminate();
+	//glfwTerminate();
+	glfwDestroyWindow(window);
 	std::cout <<"Closing down the LOOP"<<std::endl;
 }
 
