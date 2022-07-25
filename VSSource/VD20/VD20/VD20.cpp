@@ -109,19 +109,28 @@ int main()
     ResourceManager::LoadShader("shaders/simple_tex.vert", "shaders/simple_tex.frag","sh_simpleTex");
     ResourceManager::LoadTexture("Resources/Images/container.jpg", "tex_container");
     ResourceManager::LoadTexture("Resources/Images/tiger.jpg","tex_tiger");
-
+    float fPreviousTime = 0;
+    float fCurrentTime = 0;
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
     {
+        fCurrentTime = glfwGetTime();
+        float delta = fCurrentTime - fPreviousTime;
+       
         // input
         // -----
+        glfwPollEvents();
         processInput(window);
+        breakoutApp->ProcessInput(delta);
+
+        breakoutApp->Update(delta);
 
         // render
         // ------
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        breakoutApp->Render();
 
         glEnableVertexAttribArray(0);
         // 2. use our shader program when we want to render an object
@@ -131,15 +140,18 @@ int main()
       
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
-         //TODO: CHeck square working 
-        // Create sprite and application
+         //TODO: Check VAO square working 
+        // Create sprite and 
+        //Check application
       
 
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
-        glfwPollEvents();
+    
+
+        fPreviousTime = fCurrentTime;
     }
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
