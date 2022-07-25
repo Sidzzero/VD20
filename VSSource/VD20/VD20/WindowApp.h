@@ -1,7 +1,6 @@
 #ifndef WINDOW_APP_H
 #define WINDOW_APP_H
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "Core/common.h"
 #include <string>
 
 #include "Game.h"

@@ -1,22 +1,24 @@
 // sandbox.cpp : This file contains the 'main' function. Program execution begins and ends there.
 // NEED TO LINK TO Actual head file also
+// I have directed the include files and lib files in this project also!
+
 
 #include <iostream>
 #include "WindowApp.h"
-//#include "WindowApp.h"
+
 #include "app_tictactoe.h"
 int main()
 {
     std::cout << "Welocme to Sandbox!\n";
-   // WindowApp* winApp = nullptr;
-  //  winApp = new WindowApp();
+    WindowApp* winApp = nullptr;
+    winApp = new WindowApp();
     Game* game = new app_tictactoe(800, 600);
     game->Init();
 
-  //  winApp->Init("VD Engine", 800, 700,game);
-  //  winApp->Loop();
+    winApp->Init("VD Engine", 800, 700,game);
+    winApp->Loop();
   
-  //  winApp->Cleanup();
+    winApp->Cleanup();
     std::cout << "Press something to continue...";
     getchar();
     return 0;
