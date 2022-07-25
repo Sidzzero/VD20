@@ -107,7 +107,8 @@ int main()
     SetupMesh(vao);
 
     ResourceManager::LoadShader("shaders/simple_tex.vert", "shaders/simple_tex.frag","sh_simpleTex");
-    ResourceManager::LoadTexture("container.jpg","tex_container");
+    ResourceManager::LoadTexture("Resources/Images/container.jpg", "tex_container");
+    ResourceManager::LoadTexture("Resources/Images/tiger.jpg","tex_tiger");
 
     // render loop
     // -----------
@@ -126,11 +127,14 @@ int main()
         // 2. use our shader program when we want to render an object
     
         ResourceManager::GetShader("sh_simpleTex")->use();
-        ResourceManager::GetTexture("tex_container")->UseTexture();
+        ResourceManager::GetTexture("tex_tiger")->UseTexture();
       
         glBindVertexArray(vao);
-
         glDrawArrays(GL_TRIANGLES, 0, 3);
+         //TODO: CHeck square working 
+        // Create sprite and application
+      
+
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
