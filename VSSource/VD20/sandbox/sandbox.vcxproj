@@ -79,7 +79,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\bin\$(Platform)-$(Configuration)\$(ProjectName)</OutDir>
-    <IntDir>$(SolutionDir)\bin\$(Platform)-$(Configuration)\$(ProjectName)</IntDir>
+    <IntDir>$(SolutionDir)\bin_int\$(Platform)-$(Configuration)\$(ProjectName)</IntDir>
+    <IncludePath>D:\Projects\EngineVD2\VD20\VSSource\VD20\bin\x64-Debug\VD20;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -120,10 +121,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\Projects\EngineVD2\VD20\VSSource\VD20\Test_staticLib;D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>D:\Projects\EngineVD2\VD20\VSSource\VD20\bin\x64-Debug\VD20\VD20.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Projects\EngineVD2\VD20\VSSource\VD20\bin\x64-Debug\VD20;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -134,6 +138,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\Projects\EngineVD2\VD20\VSSource\VD20\Test_staticLib;D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,6 +151,9 @@
     <ClCompile Include="sandbox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Test_staticLib\Test_staticLib.vcxproj">
+      <Project>{c1981ce9-aad9-4d2c-b88f-0c2bbc981433}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\VD20\VD20.vcxproj">
       <Project>{bd20ff9f-71af-446f-861b-95bae94e4b8d}</Project>
     </ProjectReference>

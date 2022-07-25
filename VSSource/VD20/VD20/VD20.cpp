@@ -48,7 +48,7 @@ float verticesWithTexture[] =
 };
 
 
-int main()
+ extern int main1()
 {
     //Declare 
     Game* breakoutApp = nullptr;
