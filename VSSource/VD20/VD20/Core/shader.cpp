@@ -93,6 +93,74 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
         std::cout << "Loading Shaders Sucess:VertexShader: "<<vertexPath<<",FragmentShader:"<<fragmentPath<<std::endl;
     }
 }
+
+Shader::Shader()
+{
+    ID = -1;
+}
+
+bool Shader::LoadShader(const char* vShaderCode, const char* fShaderCode)
+{
+    bool bLoadFail = false;
+
+    unsigned int vertex, fragment;
+    int success;
+    char infoLog[512];
+
+    // vertex Shader
+    vertex = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertex, 1, &vShaderCode, NULL);
+    glCompileShader(vertex);
+    // print compile errors if any
+    glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        bLoadFail = true;
+        glGetShaderInfoLog(vertex, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+    };
+
+    //Frag ment Shader
+    fragment = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragment, 1, &fShaderCode, NULL);
+    glCompileShader(fragment);
+    // print compile errors if any
+    glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        bLoadFail = true;
+        glGetShaderInfoLog(fragment, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::fragment::COMPILATION_FAILED\n" << infoLog << std::endl;
+    };
+
+    // shader Program
+    ID = glCreateProgram();
+    glAttachShader(ID, vertex);
+    glAttachShader(ID, fragment);
+    glLinkProgram(ID);
+    // print linking errors if any
+    glGetProgramiv(ID, GL_LINK_STATUS, &success);
+    if (!success)
+    {
+        bLoadFail = true;
+        glGetProgramInfoLog(ID, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+    }
+
+    // delete the shaders as they're linked into our program now and no longer necessary
+    glDeleteShader(vertex);
+    glDeleteShader(fragment);
+    if (bLoadFail == true)
+    {
+        std::cout << "Loading Shaders Failed";
+    }
+    else
+    {
+        std::cout << "Loading Shaders Sucess:VertexShader: [" << vShaderCode << "],FragmentShader:[" << fShaderCode << "]" << std::endl;
+    }
+
+    return !bLoadFail;
+}
 void Shader::use()
 {
     glUseProgram(ID);

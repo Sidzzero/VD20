@@ -152,14 +152,18 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="glad.c" />
-    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="Core\shader.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VD20.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\common.h" />
     <ClInclude Include="Core\External\stb_image.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="shader.h" />
+    <ClInclude Include="Core\shader.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

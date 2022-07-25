@@ -14,7 +14,11 @@
 #include "Core/External/glm/glm/gtc/matrix_transform.hpp"
 #include "Core/External/glm/glm/gtc/type_ptr.hpp"
 
-#include "shader.h"
+#include "Core/shader.h"
+
+//----GAME---//
+#include "Game.h"
+#include "ResourceManager.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -45,6 +49,11 @@ float verticesWithTexture[] =
 
 int main()
 {
+    //Declare 
+    Game* breakoutApp = nullptr;
+    breakoutApp = new Game(SCR_WIDTH, SCR_HEIGHT);;
+    breakoutApp->Init();
+
     
     std::cout << "Welcome VD_20\n";
 
@@ -87,6 +96,9 @@ int main()
     vec = trans * vec;
     std::cout << vec.x << vec.y << vec.z << std::endl;
     */
+    
+   
+  
 
     GLuint vao;
     GLuint texture;
@@ -99,7 +111,12 @@ int main()
 
     Shader simpleShader("shaders/simple.vert", "shaders/simple.frag");
     Shader simpleTexShader("shaders/simple_tex.vert","shaders/simple_tex.frag");
+   
+    Shader *simpleTex2 = nullptr;
+    bool bResultSh = ResourceManager::LoadShader("shaders/simple_tex.vert", "shaders/simple_tex.frag","sh_simpleTex");
+    simpleTex2 = ResourceManager::GetShader("sh_simpleTex");
     
+
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -116,7 +133,8 @@ int main()
         glEnableVertexAttribArray(0);
         // 2. use our shader program when we want to render an object
       //  glUseProgram(shaderObject);
-        simpleTexShader.use();
+      //  simpleTexShader.use();
+        simpleTex2->use();
         glBindTexture(GL_TEXTURE_2D, texture);
         glBindVertexArray(vao);
 
@@ -254,7 +272,7 @@ GLuint SetupTexture(const char *a_fileName)
     {
         std::cout << "Sucess in loading Texture:"<< a_fileName<<std::endl;
     }
-
+    glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
