@@ -37,13 +37,13 @@ void WindowApp::Init(std::string windowName,unsigned int Width, unsigned int Hei
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
 	
-	/*
+	
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return;
 	}
-	*/
+	
 	gameApp->Init();
 }
 void WindowApp::Loop()
@@ -64,6 +64,7 @@ void WindowApp::Loop()
 		glfwSwapBuffers(window);
 		
 	}
+	glfwTerminate();
 	std::cout <<"Closing down the LOOP"<<std::endl;
 }
 
