@@ -113,9 +113,10 @@ int main()
     Shader simpleTexShader("shaders/simple_tex.vert","shaders/simple_tex.frag");
    
     Shader *simpleTex2 = nullptr;
-    bool bResultSh = ResourceManager::LoadShader("shaders/simple_tex.vert", "shaders/simple_tex.frag","sh_simpleTex");
-    simpleTex2 = ResourceManager::GetShader("sh_simpleTex");
     
+    bool bResultSh = ResourceManager::LoadShader("shaders/simple_tex.vert", "shaders/simple_tex.frag","sh_simpleTex");
+    ResourceManager::LoadTexture("container.jpg","tex_container");
+
 
     // render loop
     // -----------
@@ -134,8 +135,9 @@ int main()
         // 2. use our shader program when we want to render an object
       //  glUseProgram(shaderObject);
       //  simpleTexShader.use();
-        simpleTex2->use();
-        glBindTexture(GL_TEXTURE_2D, texture);
+        ResourceManager::GetShader("sh_simpleTex")->use();
+        ResourceManager::GetTexture("tex_container")->UseTexture();
+      
         glBindVertexArray(vao);
 
         glDrawArrays(GL_TRIANGLES, 0, 3);

@@ -9,6 +9,7 @@
 #include "Texture.h"
 
 
+
 /// <summary>
 /// This class takes care of loading and storing all the resources like textures
 /// shaders for easy loading,access
@@ -25,7 +26,7 @@ public:
 	static bool LoadShader(const char* vertFilename,
 		            const char* fragFileName, std::string shaderName);
 
-	static bool LoadTexture(const char* texFileLocation);
+	static bool LoadTexture(const char* texFileLocation, std::string shaderName);
 
 private:
 	ResourceManager();//as everything else is static dont want anyone creating this...

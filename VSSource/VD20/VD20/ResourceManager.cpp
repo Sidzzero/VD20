@@ -1,4 +1,5 @@
 #include "ResourceManager.h"
+#include "Core/External/stb_image.h"
 
  std::map<std::string, Shader*>  ResourceManager::shaders;
  std::map<std::string, Texture*> ResourceManager::textures;
@@ -75,9 +76,32 @@ bool ResourceManager::LoadShader(const char* vertFilename, const char* fragFileN
 	 
 }
 
-bool ResourceManager::LoadTexture(const char* texFileLocation)
+bool ResourceManager::LoadTexture(const char* texFileLocation, std::string shaderName)
 {
+
 	Texture* createdTexture = nullptr;
-	return createdTexture;
-	return false;
+	GLuint texture = -1;
+	int width, height, nrChannels;
+
+	unsigned char* data = stbi_load(texFileLocation, &width, &height, &nrChannels, 0);
+	if (data == nullptr)
+	{
+		std::cout << "Error in loading Texture" << std::endl;
+		return false;
+	}
+	else
+	{
+		std::cout << "Sucess in loading Texture:" << texFileLocation << std::endl;
+	}
+
+	Texture* texCreated = new Texture(data,width,height,nrChannels);
+	if(texCreated == nullptr)
+	{
+		std::cout << "ERROR::Texture::Loading failure" << std::endl;
+
+	  return false;
+	}
+	textures.insert(std::pair<std::string, Texture*>(shaderName, texCreated));
+
+	return true;
 }
