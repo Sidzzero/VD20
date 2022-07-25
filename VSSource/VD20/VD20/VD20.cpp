@@ -104,19 +104,10 @@ int main()
     GLuint texture;
     GLuint shaderObject;
 
-    
     SetupMesh(vao);
-    texture = SetupTexture("container.jpg");
-    SetupShader(shaderObject);
 
-    Shader simpleShader("shaders/simple.vert", "shaders/simple.frag");
-    Shader simpleTexShader("shaders/simple_tex.vert","shaders/simple_tex.frag");
-   
-    Shader *simpleTex2 = nullptr;
-    
-    bool bResultSh = ResourceManager::LoadShader("shaders/simple_tex.vert", "shaders/simple_tex.frag","sh_simpleTex");
+    ResourceManager::LoadShader("shaders/simple_tex.vert", "shaders/simple_tex.frag","sh_simpleTex");
     ResourceManager::LoadTexture("container.jpg","tex_container");
-
 
     // render loop
     // -----------
@@ -133,8 +124,7 @@ int main()
 
         glEnableVertexAttribArray(0);
         // 2. use our shader program when we want to render an object
-      //  glUseProgram(shaderObject);
-      //  simpleTexShader.use();
+    
         ResourceManager::GetShader("sh_simpleTex")->use();
         ResourceManager::GetTexture("tex_container")->UseTexture();
       
