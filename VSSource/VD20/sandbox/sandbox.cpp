@@ -2,13 +2,21 @@
 // NEED TO LINK TO Actual head file also
 
 #include <iostream>
+#include "WindowApp.h"
+//#include "WindowApp.h"
 #include "app_tictactoe.h"
 int main()
 {
     std::cout << "Welocme to Sandbox!\n";
+   // WindowApp* winApp = nullptr;
+  //  winApp = new WindowApp();
+    Game* game = new app_tictactoe(800, 600);
+    game->Init();
 
-    app_tictactoe t(1,1);
-    t.Init();
+  //  winApp->Init("VD Engine", 800, 700,game);
+  //  winApp->Loop();
+  
+  //  winApp->Cleanup();
     std::cout << "Press something to continue...";
     getchar();
     return 0;

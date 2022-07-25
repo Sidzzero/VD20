@@ -90,6 +90,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\bin\$(Platform)-$(Configuration)\$(ProjectName)</OutDir>
     <IntDir>$(SolutionDir)\binint\$(Platform)-$(Configuration)\$(ProjectName)</IntDir>
+    <IncludePath>D:\Projects\EngineVD2\VD20\VSSource\VD20\External\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projects\EngineVD2\VD20\VSSource\VD20\External\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -157,6 +159,7 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VD20.cpp" />
+    <ClCompile Include="WindowApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app_tictactoe.h" />
@@ -166,6 +169,15 @@
     <ClInclude Include="Core\shader.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="WindowApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="glfw3.lib" />
+    <Library Include="glfw3dll.lib" />
+    <Library Include="glfw3_mt.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glfw3.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

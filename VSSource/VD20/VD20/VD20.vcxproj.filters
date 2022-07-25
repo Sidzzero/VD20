@@ -39,6 +39,9 @@
     <ClCompile Include="app_tictactoe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WindowApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\shader.h">
@@ -62,5 +65,16 @@
     <ClInclude Include="app_tictactoe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WindowApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="glfw3dll.lib" />
+    <Library Include="glfw3.lib" />
+    <Library Include="glfw3_mt.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glfw3.dll" />
   </ItemGroup>
 </Project>

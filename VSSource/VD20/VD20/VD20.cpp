@@ -1,6 +1,9 @@
 // VD20.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#ifdef  VD20_CPP
+
+
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -48,7 +51,7 @@ float verticesWithTexture[] =
 };
 
 
- inline int main1()
+  int main1()
 {
     //Declare 
     Game* breakoutApp = nullptr;
@@ -302,3 +305,6 @@ GLuint SetupTexture(const char *a_fileName)
 //   4. Use the Error List window to view errors
 //   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
 //   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+
+#endif // ! VD20_CPP
+
