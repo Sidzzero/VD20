@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="app_tictactoe.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Core\shader.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="VD20.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="app_tictactoe.h" />
     <ClInclude Include="Core\common.h" />
     <ClInclude Include="Core\External\stb_image.h" />
     <ClInclude Include="Game.h" />

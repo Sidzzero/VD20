@@ -19,6 +19,7 @@
 //----GAME---//
 #include "Game.h"
 #include "ResourceManager.h"
+#include "app_tictactoe.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -51,7 +52,8 @@ int main()
 {
     //Declare 
     Game* breakoutApp = nullptr;
-    breakoutApp = new Game(SCR_WIDTH, SCR_HEIGHT);;
+
+    breakoutApp = new app_tictactoe(SCR_WIDTH, SCR_HEIGHT);
     breakoutApp->Init();
 
     

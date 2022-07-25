@@ -4,8 +4,11 @@ Game::Game(unsigned int width, unsigned int height):Width(width),Height(height),
 {
 
 }
+Game::~Game()
+{
+}
 
-void Game::Init()
+ void Game::Init()
 {
 
 }
