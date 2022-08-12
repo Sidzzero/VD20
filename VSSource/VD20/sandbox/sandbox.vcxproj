@@ -80,14 +80,14 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\bin\$(Platform)-$(Configuration)\$(ProjectName)</OutDir>
     <IntDir>$(SolutionDir)\bin_int\$(Platform)-$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>D:\Projects\EngineVD2\VD20\VSSource\VD20\bin\x64-Debug\VD20;D:\Projects\EngineVD2\VD20\VSSource\VD20\External;$(IncludePath);D:\Projects\EngineVD2\VD20\VSSource\VD20\External\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Projects\EngineVD2\VD20\VSSource\VD20\bin\x64-Debug\VD20;D:\Projects\EngineVD2\VD20\VSSource\VD20\External;$(IncludePath);D:\Projects\EngineVD2\VD20\VSSource\VD20\External\include;$(IncludePath);D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\Core\External</IncludePath>
     <LibraryPath>D:\Projects\EngineVD2\VD20\VSSource\VD20\External\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\bin\$(Platform)-$(Configuration)\$(ProjectName)</OutDir>
     <IntDir>$(SolutionDir)\bin\$(Platform)-$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);;D:\Projects\EngineVD2\VD20\VSSource\VD20\External\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);;D:\Projects\EngineVD2\VD20\VSSource\VD20\External\include;$(IncludePath);D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\Core\External</IncludePath>
     <LibraryPath>D:\Projects\EngineVD2\VD20\VSSource\VD20\External\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

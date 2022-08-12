@@ -157,6 +157,7 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="Core\shader.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VD20.cpp" />
     <ClCompile Include="WindowApp.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Core\shader.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="WindowApp.h" />
   </ItemGroup>

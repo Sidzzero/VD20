@@ -1,5 +1,5 @@
 #include "ResourceManager.h"
-#include "Core/External/stb_image.h"
+
 
  std::map<std::string, Shader*>  ResourceManager::shaders;
  std::map<std::string, Texture*> ResourceManager::textures;
@@ -84,6 +84,10 @@ bool ResourceManager::LoadTexture(const char* texFileLocation, std::string shade
 	int width, height, nrChannels;
 
 	unsigned char* data = stbi_load(texFileLocation, &width, &height, &nrChannels, 0);
+	width = 0;
+	height = 0;
+	nrChannels = 3;
+    data = nullptr;
 	if (data == nullptr)
 	{
 		std::cout << "Error in loading Texture" << std::endl;

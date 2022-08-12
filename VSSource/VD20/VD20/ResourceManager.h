@@ -4,7 +4,8 @@
 #include <string>
 #include <iterator>
 #include <map>
-
+#define STB_IMAGE_IMPLEMENTATION
+#include "Core/External/stb_image.h"
 #include "Core/shader.h"
 #include "Texture.h"
 
