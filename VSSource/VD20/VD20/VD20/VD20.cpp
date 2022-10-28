@@ -2,10 +2,14 @@
 //
 
 #include <iostream>
-
+#include "BaseGame.h"
 int main()
 {
+  //  BaseGame game{};
+
+    
     std::cout << "Hello World!\n";
+    std::getchar();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
