@@ -160,6 +160,7 @@
     <ClInclude Include="glad.h" />
     <ClInclude Include="khrplatform.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="WindowClient.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseGame.cpp" />
@@ -171,6 +172,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vd_core.cpp" />
+    <ClCompile Include="WindowClient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Core\glfw\glfw3.lib" />
