@@ -8,7 +8,7 @@
 #include "glad.h"
 #include "Core/glfw/includes/glfw3.h"
 #include "TicTacToeGame.h"
-
+#include "resource_manager.h"
 
 
 int main()
@@ -18,7 +18,7 @@ int main()
     game->Name = "Tic Tac Toe in VD_Engine";
     WindowClient *app = new WindowClient(game,800,600);
     app->Run();
-
+    ResourceManager::Clear();
     return 0;
 }
 
