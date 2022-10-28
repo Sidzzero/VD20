@@ -160,6 +160,7 @@
     <ClInclude Include="glad.h" />
     <ClInclude Include="khrplatform.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="shader.h" />
     <ClInclude Include="vd_math.h" />
     <ClInclude Include="WindowClient.h" />
   </ItemGroup>
@@ -172,6 +173,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="shader.cpp" />
     <ClCompile Include="vd_core.cpp" />
     <ClCompile Include="WindowClient.cpp" />
   </ItemGroup>
