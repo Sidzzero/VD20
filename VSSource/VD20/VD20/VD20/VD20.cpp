@@ -17,7 +17,9 @@ int main()
     BaseGame* game = new TicTacToeGame();
     game->Name = "Tic Tac Toe in VD_Engine";
     WindowClient *app = new WindowClient(game,800,600);
+
     app->Run();
+
     ResourceManager::Clear();
     return 0;
 }
