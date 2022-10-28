@@ -141,12 +141,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TicTacToeGame.cpp" />
     <ClCompile Include="VD20.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vd_core\vd_core.vcxproj">
       <Project>{c4d3ba94-6e98-4765-8582-8259e3d97d8b}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TicTacToeGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

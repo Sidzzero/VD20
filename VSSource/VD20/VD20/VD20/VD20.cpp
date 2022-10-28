@@ -7,14 +7,15 @@
 
 #include "glad.h"
 #include "Core/glfw/includes/glfw3.h"
-
+#include "TicTacToeGame.h"
 
 
 int main()
 {
   //  BaseGame game{};
-
-    WindowClient *app = new WindowClient(nullptr,800,600);
+    BaseGame* game = new TicTacToeGame();
+    game->Name = "Tic Tac Toe in VD_Engine";
+    WindowClient *app = new WindowClient(game,800,600);
     app->Run();
 
     return 0;
