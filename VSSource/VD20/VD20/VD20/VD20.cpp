@@ -4,15 +4,16 @@
 #include <iostream>
 //#include "BaseGame.h"
 #include "WindowClient.h"
-
+#include "vd_math.h"
 #include "glad.h"
 #include "Core/glfw/includes/glfw3.h"
 #include "TicTacToeGame.h"
 
 
+
 int main()
 {
-  //  BaseGame game{};
+
     BaseGame* game = new TicTacToeGame();
     game->Name = "Tic Tac Toe in VD_Engine";
     WindowClient *app = new WindowClient(game,800,600);

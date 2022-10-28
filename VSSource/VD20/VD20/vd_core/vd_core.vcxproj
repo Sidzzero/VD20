@@ -126,7 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\vd_core\Core\glfw\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\vd_core\Core\glfw\includes;D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\vd_core\Core\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -144,7 +144,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\vd_core\Core\glfw\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\vd_core\Core\glfw\includes;D:\Projects\EngineVD2\VD20\VSSource\VD20\VD20\vd_core\Core\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -160,6 +160,7 @@
     <ClInclude Include="glad.h" />
     <ClInclude Include="khrplatform.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="vd_math.h" />
     <ClInclude Include="WindowClient.h" />
   </ItemGroup>
   <ItemGroup>
